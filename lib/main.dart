@@ -52,10 +52,9 @@ class MyHomePage extends StatefulWidget {
 
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   Position? _position;
 
-  void _incrementCounter() async {
+  void _showPosition() async {
     Position p = await _determinePosition();
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -63,7 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter++;
       _position = p;
     });
   }
@@ -148,14 +146,14 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have clicked the button this many times:',
             ),
             Text(
-              '$_counter $_position',
+              '$_position',
               style: Theme.of(context).textTheme.headline4,
             ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _showPosition,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
